@@ -2,8 +2,6 @@ import React from "react";
 import "./Joke.css";
 class ClassJokeProps extends React.Component {
 
- 
-
   render(){
 
     <WrapperJokeList render ={ obj => (
@@ -13,18 +11,14 @@ class ClassJokeProps extends React.Component {
             <button onClick={obj.upVote}>
               <i className="fas fa-thumbs-up" />
             </button>
-
             <button onClick={obj.downVote}>
               <i className="fas fa-thumbs-down" />
             </button>
-
-          {votes}
+          {obj.votes}
         </div>
       <div className="Joke-text">{obj.text}</div>
     </div>
     
-
-
     )}
     />
   }

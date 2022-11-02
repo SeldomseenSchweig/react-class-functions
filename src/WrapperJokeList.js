@@ -82,14 +82,14 @@ class WrapperJokeList extends React.Component {
               Get New Jokes
             </button>
               <div>
-                { this.props.render(
+                { 
                   sortedJokes.map(j => ( 
-                  {   
+                  this.props.render({   
                     
                       text:j.joke,
                       key: j.id,
                       id: j.id,
-                      votes: j.vote,
+                      votes: j.votes,
                       vote:this.vote,
                       upVote:this.upVote,
                       downVote:this.downVote
