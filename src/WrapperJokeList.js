@@ -75,7 +75,6 @@ class WrapperJokeList extends React.Component {
 
     render(){
       let sortedJokes = this.sortJokes()
-
         return(
             <div className="JokeList">
             <button className="JokeList-getmore" onClick={this.generateNewJokes}>
