@@ -8,9 +8,12 @@ class ClassJokeList extends React.Component {
 
     constructor(props){
         super(props);
-        this.state ={jokes: []}
-        this.generateNewJokes = this.generateNewJokes.bind(this)
-        this.getJokes =  this.getJokes.bind(this)
+        this.state ={jokes: []};
+        this.generateNewJokes = this.generateNewJokes.bind(this);
+        this.getJokes =  this.getJokes.bind(this);
+        this.vote = this.vote.bind(this);
+        this.upVote = this.upVote.bind(this);
+        this.downVote = this.downVote.bind(this)
 
  
 
@@ -55,12 +58,30 @@ class ClassJokeList extends React.Component {
 
 
     }
+    vote(id, delta) {
+       
+        this.setState(allJokes =>{allJokes.jokes.map(j => (j.id === id ? { ...j, votes: j.votes + delta } : j ))
+
+            }
+        
+        );
+
+      }
+  
+    upVote(id) {
+        this.vote(id.target.id, +1)
+    }
+
+
+    downVote(id) {
+
+        this.vote(id.target.id, -1)
+    }
 
     render(){
         let {jokes} = this.state
        
             let sortedJokes = [...jokes].sort((a, b) => b.votes - a.votes);
-            console.log(sortedJokes)
         
         return(
             <div className="JokeList">
@@ -69,7 +90,21 @@ class ClassJokeList extends React.Component {
             </button>
       
             {sortedJokes.map(j => (
-                <h1> {j.joke}</h1>
+                    <div className="Joke">
+                    <div className="Joke-votearea">
+                      <button  onClick={this.upVote}>
+                        <i id={j.id} className="fas fa-thumbs-up" />
+                      </button>
+              
+                      <button  onClick={this.downVote}>
+                        <i id={j.id} className="fas fa-thumbs-down" />
+                      </button>
+              
+                      {j.votes}
+                    </div>
+              
+                    <div className="Joke-text">{j.joke}</div>
+                  </div>
             ))}
          </div>
 

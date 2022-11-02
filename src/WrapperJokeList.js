@@ -8,7 +8,7 @@ class WrapperJokeList extends React.Component {
 
     constructor(props){
         super(props);
-        this.state ={jokes: []};
+        this.state = {jokes: []};
         this.generateNewJokes = this.generateNewJokes.bind(this);
         this.getJokes =  this.getJokes.bind(this);
         this.sortJokes = this.sortJokes.bind(this);
