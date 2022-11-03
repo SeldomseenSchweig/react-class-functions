@@ -21,7 +21,7 @@ class ClassJokeList extends React.Component {
     async getJokes (){
         let numJokesToGet = 10
         const {jokes} = this.state
-        let j = []
+        let j = [...jokes]
         let seenJokes = new Set();
 
         
@@ -55,18 +55,20 @@ class ClassJokeList extends React.Component {
     componentDidMount(){
         this.getJokes()
     };
-
-    generateNewJokes() {
-      this.setState( {jokes : []} ) 
-      console.log(this.state)
-     
-
-        this.getJokes();
+    componentDidUpdate(){
+      if (this.state.jokes.length < 10 ) {this.getJokes()}
 
     }
-    vote(id, delta) {
+
+    generateNewJokes() {     
+
+        this.setState({joked:[]});
+
+    }
+     vote(id, delta) {
        
         this.setState(allJokes =>{allJokes.jokes.map(j => (j.id === id ? { ...j, votes: j.votes + delta } : j ))
+         
 
             }
         
@@ -74,8 +76,8 @@ class ClassJokeList extends React.Component {
 
       }
   
-    upVote(id) {
-        this.vote(id.target.id, +1)
+     upVote(id) {
+         this.vote(id.target.id, +1)
     }
 
 
