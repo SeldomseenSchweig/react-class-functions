@@ -21,7 +21,7 @@ class ClassJokeList extends React.Component {
     async getJokes (){
         let numJokesToGet = 10
         const {jokes} = this.state
-        let j = [...jokes]
+        let j = []
         let seenJokes = new Set();
 
         
@@ -57,8 +57,7 @@ class ClassJokeList extends React.Component {
     };
 
     generateNewJokes() {
-      let copyJokes = {jokes:[]}
-      this.setState((jokes)=>{jokes = {}}) 
+      this.setState( {jokes : []} ) 
       console.log(this.state)
      
 
