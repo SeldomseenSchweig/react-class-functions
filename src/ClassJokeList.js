@@ -24,8 +24,12 @@ class ClassJokeList extends React.Component {
         let j = [...jokes]
         let seenJokes = new Set();
 
+        
+
+
         try {
             while (j.length < numJokesToGet) {
+
               let res = await axios.get("https://icanhazdadjoke.com", {
                 headers: { Accept: "application/json" }
               });
@@ -53,9 +57,12 @@ class ClassJokeList extends React.Component {
     };
 
     generateNewJokes() {
-        this.getJokes();
-        console.log(this.state.jokes);
+      let copyJokes = {jokes:[]}
+      this.setState((jokes)=>{jokes = {}}) 
+      console.log(this.state)
+     
 
+        this.getJokes();
 
     }
     vote(id, delta) {
