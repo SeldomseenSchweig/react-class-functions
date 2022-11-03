@@ -62,7 +62,7 @@ class ClassJokeList extends React.Component {
 
     generateNewJokes() {     
 
-        this.setState({joked:[]});
+        this.setState({jokes:[]});
 
     }
      vote(id, delta) {
