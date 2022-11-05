@@ -57,6 +57,7 @@ class ClassJokeList extends React.Component {
     };
     componentDidUpdate(){
       if (this.state.jokes.length < 10 ) {this.getJokes()}
+    
 
     }
 
@@ -66,13 +67,12 @@ class ClassJokeList extends React.Component {
 
     }
      vote(id, delta) {
-       
-        this.setState(allJokes =>{allJokes.jokes.map(j => (j.id === id ? { ...j, votes: j.votes + delta } : j ))
-         
-
-            }
+        const updatesArray = (this.state.jokes.map(j => 
+          
+          (j.id === id ? { ...j, votes: j.votes + delta }: j )) 
         
         );
+        this.setState({jokes:updatesArray})
 
       }
   
